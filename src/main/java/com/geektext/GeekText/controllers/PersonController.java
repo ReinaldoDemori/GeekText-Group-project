@@ -5,13 +5,7 @@ import com.geektext.GeekText.repositories.PersonRepository;
 import com.geektext.GeekText.entities.Person;
 import com.geektext.GeekText.exceptions.PersonNotFoundException;
 
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 class PersonController {
@@ -38,14 +32,14 @@ class PersonController {
   // Single item
   
   @GetMapping("/persons/{id}")
-  Person one(@PathVariable Long id) {
+  Person one(@PathVariable Integer id) {
     
     return repository.findById(id)
       .orElseThrow(() -> new PersonNotFoundException(id)); //need to create exception file
   }
 
   @PutMapping("/persons/{id}")
-  Person replacePerson(@RequestBody Person newPerson, @PathVariable Long id) {
+  Person replacePerson(@RequestBody Person newPerson, @PathVariable Integer id) {
     
     return repository.findById(id)
       .map(person -> {
@@ -59,7 +53,7 @@ class PersonController {
   }
 
   @DeleteMapping("/persons/{id}")
-  void deletePerson(@PathVariable Long id) {
+  void deletePerson(@PathVariable Integer id) {
     repository.deleteById(id);
   }
 
