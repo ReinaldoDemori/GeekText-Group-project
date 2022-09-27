@@ -7,8 +7,8 @@ DELETE FROM BOOK;
 DELETE FROM AUTHOR;
 
 INSERT INTO Author
-Values (1,'Jane','Doe','Lorem Ipsum Verbatum','Bogus Inc.'),
-       (2,'John','Doe','If Life was just a Dream', 'Chex LLC');
+Values ('Jane','Doe','Lorem Ipsum Verbatum','Bogus Inc.'),
+       ('John','Doe','If Life was just a Dream', 'Chex LLC');
 	   
 INSERT INTO Book
 Values ('1234567890123','When I Dream Of Cheese','A book about a cheese-loving man.',19.99,2,'Fiction','Chex LLC','3034',46000),

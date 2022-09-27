@@ -2,52 +2,28 @@ package com.geektext.GeekText.entities;
 
 import java.io.Serializable;
 import javax.persistence.*;
-import javax.xml.bind.annotation.XmlRootElement;
+
 
 @Entity
-@Table(catalog = "", schema = "", uniqueConstraints = {
-    @UniqueConstraint(columnNames = {"ISBN"}),
-    @UniqueConstraint(columnNames = {"BName"})})
-@XmlRootElement
-@NamedQueries({
-    @NamedQuery(name = "Book.findAll", query = "SELECT b FROM Book b"),
-    @NamedQuery(name = "Book.findByIsbn", query = "SELECT b FROM Book b WHERE b.isbn = :isbn"),
-    @NamedQuery(name = "Book.findByBName", query = "SELECT b FROM Book b WHERE b.bName = :bName"),
-    @NamedQuery(name = "Book.findByBDesc", query = "SELECT b FROM Book b WHERE b.bDesc = :bDesc"),
-    @NamedQuery(name = "Book.findByBPrice", query = "SELECT b FROM Book b WHERE b.bPrice = :bPrice"),
-    @NamedQuery(name = "Book.findByGenre", query = "SELECT b FROM Book b WHERE b.genre = :genre"),
-    @NamedQuery(name = "Book.findByPublisher", query = "SELECT b FROM Book b WHERE b.publisher = :publisher"),
-    @NamedQuery(name = "Book.findByPubYear", query = "SELECT b FROM Book b WHERE b.pubYear = :pubYear"),
-    @NamedQuery(name = "Book.findBySCopies", query = "SELECT b FROM Book b WHERE b.sCopies = :sCopies")})
-public class Book implements Serializable {
+public class Book implements Serializable{
 
-    private static final long serialVersionUID = 1L;
     @Id
-    @GeneratedValue
     private String isbn;
-    @Basic(optional = false)
-    @Column(nullable = false, length = 2000000000)
+    
     private String bName;
-    @Basic(optional = false)
-    @Column(nullable = false, length = 2000000000)
+    
     private String bDesc;
-    @Basic(optional = false)
-    @Column(nullable = false)
+    
     private double bPrice;
-    @Basic(optional = false)
-    @Column(nullable = false, length = 2000000000)
+    
     private String genre;
-    @Basic(optional = false)
-    @Column(nullable = false, length = 2000000000)
+
     private String publisher;
-    @Basic(optional = false)
-    @Column(nullable = false, length = 2000000000)
+    
     private String pubYear;
-    @Basic(optional = false)
-    @Column(nullable = false)
+    
     private int sCopies;
-    @JoinColumn(name = "Author_ID", referencedColumnName = "Author_ID", nullable = false)
-    @ManyToOne(optional = false)
+    
     private Author authorID;
 
     public Book() {
