@@ -2,7 +2,7 @@ package com.geektext.GeekText.exceptions;
 
 public class PersonNotFoundException extends RuntimeException {
 
-    public PersonNotFoundException(Long id) {
+    public PersonNotFoundException(Integer id) {
         super("Could not find person " + id);
     }
 }

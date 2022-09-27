@@ -38,14 +38,14 @@ class PersonController {
   // Single item
   
   @GetMapping("/persons/{id}")
-  Person one(@PathVariable Long id) {
+  Person one(@PathVariable Integer id) {
     
     return repository.findById(id)
       .orElseThrow(() -> new PersonNotFoundException(id)); //need to create exception file
   }
 
   @PutMapping("/persons/{id}")
-  Person replacePerson(@RequestBody Person newPerson, @PathVariable Long id) {
+  Person replacePerson(@RequestBody Person newPerson, @PathVariable Integer id) {
     
     return repository.findById(id)
       .map(person -> {
@@ -59,7 +59,7 @@ class PersonController {
   }
 
   @DeleteMapping("/persons/{id}")
-  void deletePerson(@PathVariable Long id) {
+  void deletePerson(@PathVariable Integer id) {
     repository.deleteById(id);
   }
 
