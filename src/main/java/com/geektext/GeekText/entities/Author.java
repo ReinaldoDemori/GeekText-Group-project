@@ -1,11 +1,12 @@
 package com.geektext.GeekText.entities;
 
-import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 import javax.persistence.*;
 
 
 @Entity
-public class Author implements Serializable {
+public class Author {
 
     
     @Id
@@ -19,17 +20,11 @@ public class Author implements Serializable {
     private String bio;
     
     private String aPublisher;
+    
 
     public Author() {
     }
 
-    public Author(Integer authorID, String aFName, String aLName, String bio, String aPublisher) {
-        this.authorID = authorID;
-        this.aFName = aFName;
-        this.aLName = aLName;
-        this.bio = bio;
-        this.aPublisher = aPublisher;
-    }
 
     public Integer getAuthorID() {
         return authorID;

@@ -1,11 +1,12 @@
 package com.geektext.GeekText.entities;
 
-import java.io.Serializable;
+
 import javax.persistence.*;
 
 
 @Entity
-public class Book implements Serializable{
+@Table(name = "book")
+public class Book {
 
     @Id
     private String isbn;
@@ -24,6 +25,8 @@ public class Book implements Serializable{
     
     private int sCopies;
     
+    @ManyToOne(targetEntity = Author.class, cascade = CascadeType.ALL)
+    @JoinColumn(name = "author_id")
     private Author authorID;
 
     public Book() {

@@ -15,6 +15,8 @@ public class BookController {
         this.repository = repository;
     }
     
+    // Aggregate root
+    // tag::get-aggregate-root[]
     @GetMapping("/books")
     List<Book> all() {
       return repository.findAll();
@@ -35,7 +37,7 @@ public class BookController {
         .orElseThrow(() -> new BookNotFoundException(isbn)); //need to create exception file
     }
 
-    @PutMapping("/persons/{id}")
+    @PutMapping("/books/{isbn}")
     Book replaceBook(@RequestBody Book newBook, @PathVariable String isbn) {
 
       return repository.findById(isbn)
@@ -49,7 +51,7 @@ public class BookController {
         });
     }
 
-    @DeleteMapping("/books/{id}")
+    @DeleteMapping("/books/{isbn}")
     void deleteBook(@PathVariable String isbn) {
       repository.deleteById(isbn);
     }

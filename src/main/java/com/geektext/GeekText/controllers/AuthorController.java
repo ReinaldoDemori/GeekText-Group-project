@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package com.geektext.GeekText.controllers;
 
 import com.geektext.GeekText.repositories.AuthorRepository;
@@ -10,10 +7,7 @@ import com.geektext.GeekText.exceptions.AuthorNotFoundException;
 import java.util.List;
 import org.springframework.web.bind.annotation.*;
 
-/**
- *
- * @author redst
- */
+
 public class AuthorController {
     
     private final AuthorRepository repository;
@@ -22,43 +16,45 @@ public class AuthorController {
         this.repository = repository;
     }
     
+    // Aggregate root
+    // tag::get-aggregate-root[]
     @GetMapping("/authors")
     List<Author> all() {
       return repository.findAll();
     }
     // end::get-aggregate-root[]
 
-    @PostMapping("/persons")
+    @PostMapping("/authors")
     Author newAuthor (@RequestBody Author newAuthor) {
       return repository.save(newAuthor);
     }
 
     // Single item
 
-    @GetMapping("/authors/{author_id}")
-    Author one(@PathVariable Integer author_id) {
+    @GetMapping("/authors/{authorID}")
+    Author one(@PathVariable Integer authorID) {
 
-      return repository.findById(author_id)
-        .orElseThrow(() -> new AuthorNotFoundException(author_id)); //need to create exception file
+      return repository.findById(authorID)
+        .orElseThrow(() -> new AuthorNotFoundException(authorID)); //need to create exception file
     }
 
-    @PutMapping("/authors/{author_id}")
-    Author replaceAuthor(@RequestBody Author newAuthor, @PathVariable Integer author_id) {
+    @PutMapping("/authors/{authorID}")
+    Author replaceAuthor(@RequestBody Author newAuthor, @PathVariable Integer authorID) {
 
-      return repository.findById(author_id)
+      return repository.findById(authorID)
         .map(author -> {
           author.setAFName(newAuthor.getAFName());
           return repository.save(author);
         })
         .orElseGet(() -> {
-          newAuthor.setAuthorID(author_id);
+          newAuthor.setAuthorID(authorID);
           return repository.save(newAuthor);
         });
     }
 
-    @DeleteMapping("/persons/{id}")
-    void deleteAuthor(@PathVariable Integer author_id) {
-      repository.deleteById(author_id);
+    @DeleteMapping("/authors/{authorID}")
+    void deleteAuthor(@PathVariable Integer authorID) {
+      repository.deleteById(authorID);
     }
 
 }
