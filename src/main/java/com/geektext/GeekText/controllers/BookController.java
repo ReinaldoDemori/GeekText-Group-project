@@ -6,7 +6,7 @@ import com.geektext.GeekText.exceptions.BookNotFoundException;
 import com.geektext.GeekText.repositories.BookRepository;
 import org.springframework.web.bind.annotation.*;
 
-
+@RestController
 public class BookController {
 
     private final BookRepository repository;

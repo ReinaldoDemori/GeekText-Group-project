@@ -7,7 +7,7 @@ import com.geektext.GeekText.exceptions.AuthorNotFoundException;
 import java.util.List;
 import org.springframework.web.bind.annotation.*;
 
-
+@RestController
 public class AuthorController {
     
     private final AuthorRepository repository;
