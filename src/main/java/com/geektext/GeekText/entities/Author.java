@@ -1,7 +1,6 @@
 package com.geektext.GeekText.entities;
 
-import java.util.HashSet;
-import java.util.Set;
+
 import javax.persistence.*;
 
 
