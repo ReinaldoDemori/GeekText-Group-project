@@ -36,11 +36,12 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
-                <dependency>
-                 <groupId>com.github.gwenn</groupId>
-                               <artifactId>sqlite-dialect</artifactId>
-                               <version>0.1.2</version>
-                </dependency>
+
+		<dependency>
+			<groupId>com.github.gwenn</groupId>
+			<artifactId>sqlite-dialect</artifactId>
+			<version>0.1.2</version>
+		</dependency>
 	</dependencies>
 
 	<build>
