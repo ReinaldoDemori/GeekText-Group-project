@@ -40,7 +40,8 @@ public class BookRatingController {
 
       return repository.findById(commentID)
         .map(comment -> {
-            comment.setCommentID(newBookRating.getCommentID());
+          comment.setRating(newBookRating.getRating());
+          comment.setComment(newBookRating.getComment());
           return repository.save(comment);
         })
         .orElseGet(() -> {
