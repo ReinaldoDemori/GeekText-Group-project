@@ -37,6 +37,13 @@ public class BookRating implements Serializable{
         this.comment = comment;
     }
 
+    public Integer getCommentID() {
+        return this.commentID;
+    }
+    public void setCommentID(Integer commentID) {
+        this.commentID = commentID;
+    }
+
     public Book getIsbn() {
         return this.isbn;
     }
