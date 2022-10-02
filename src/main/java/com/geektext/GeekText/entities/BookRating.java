@@ -1,13 +1,19 @@
 package com.geektext.GeekText.entities;
 
 
+import java.io.Serializable;
+
 import javax.persistence.*;
 
 
 @Entity
 @Table(name = "book_rating")
 @IdClass(BookRating.class)
-public class BookRating implements Serializable {
+public class BookRating implements Serializable{
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Integer commentID;
 
     @Id
     @ManyToOne(targetEntity = Book.class, cascade = CascadeType.ALL)
