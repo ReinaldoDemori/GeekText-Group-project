@@ -23,16 +23,19 @@ class ShoppingCartController{
         this.repository = repository;
     }
 
+    //Get all shopping carts
     @GetMapping("/shoppingcarts")
     List<ShoppingCart> all(){
         return repository.findAll();
     }
 
+    //Create a new shopping cart
     @PostMapping("/shoppingcarts")
     ShoppingCart newShoppingCart(@RequestBody ShoppingCart newShoppingCart){
         return repository.save(newShoppingCart);
     }
 
+    //Get a shopping cart by it's ID
     @GetMapping("/shoppingcarts/{shoppingCartId}")
     ShoppingCart one(@PathVariable Integer shoppingCartId){
 
@@ -41,6 +44,7 @@ class ShoppingCartController{
         
     }
 
+    //Replace shopping cart
     @PutMapping("/shoppingcarts/{shoppingCartId}")
     ShoppingCart replaceShoppingCart(@RequestBody ShoppingCart newShoppingCart, @PathVariable Integer shoppingCartID){
 
@@ -54,6 +58,7 @@ class ShoppingCartController{
             });
     }
 
+    //delete a shoppig cart by it's ID
     @DeleteMapping("/shoppingcarts/{shoppingCardId}")
     void deleteShoppingCart(@PathVariable Integer shoppingCartId){
         repository.deleteById(shoppingCartId);

@@ -15,7 +15,7 @@ public class ShoppingCart {
 
     private Integer userId;
 
-    private Date creationDate;
+    //private Date creationDate;
 
     public Integer getShoppingCartId(){
         return shoppingCartId;
@@ -33,8 +33,8 @@ public class ShoppingCart {
         this.userId = userId;
     }
 
-    public Date getCreationDate(){
+    /*public Date getCreationDate(){
         return creationDate;
-    }
+    }*/
 
 }

@@ -17,7 +17,7 @@ public class ShoppingCartItems {
 
     private Long bookISBN;
 
-    private Date creationDate;
+    //private Date creationDate;
 
     public Long getShoppingCartItemId(){
         return shoppingCartItemId;
@@ -43,8 +43,8 @@ public class ShoppingCartItems {
         this.bookISBN = bookISBN;
     }
 
-    public Date getCreationDate(){
+    /*public Date getCreationDate(){
         return creationDate;
-    }
+    }*/
 
 }

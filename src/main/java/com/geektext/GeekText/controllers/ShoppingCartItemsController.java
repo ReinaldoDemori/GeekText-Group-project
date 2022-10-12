@@ -23,22 +23,26 @@ public class ShoppingCartItemsController {
         this.repository = repository;
     }
 
+    //Get items in shoppingcart
     @GetMapping("/shoppingcartitems")
     List<ShoppingCartItems> all(){
         return repository.findAll();
     }
 
+    //Create a new shopping cart item
     @PostMapping("shoppingcartitems")
     ShoppingCartItems newShoppingCartItem(@RequestBody ShoppingCartItems newShoppingCartItem){
         return repository.save(newShoppingCartItem);
     }
 
+    //Get a specific shopping cart item
     @GetMapping("/shoppingcartitems/{shoppingCartItemId}")
     ShoppingCartItems one(@PathVariable Integer shoppingCartItemId){
         return repository.findById(shoppingCartItemId)
         .orElseThrow(() -> new ShoppingCartItemNotFoundException(shoppingCartItemId));
     }
 
+    //Replace a shopping cart item by it's ID
     @PutMapping("/shoppingcartitems/{shoppingCartItemId}")
     ShoppingCartItems replaceShoppingCartItems(@RequestBody ShoppingCartItems newShoppingCartItems, @PathVariable Integer shoppingCartItemId){
         
@@ -53,6 +57,7 @@ public class ShoppingCartItemsController {
             });
     }
 
+    //Delete a shopping Cart Item
     @DeleteMapping("/shoppingcartitems/{shoppingCartItemId}")
     void deleteShoppingCartItem(@PathVariable Integer shoppingCartItemId){
         repository.deleteById(shoppingCartItemId);
