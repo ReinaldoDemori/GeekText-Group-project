@@ -1,4 +1,6 @@
 DELETE FROM PERSON;
+DELETE FROM SHOPPING_CART;
+DELETE FROM SHOPPING_CART_ITEMS;
 
 INSERT INTO PERSON(name,message) values("Varun","Hey this is Varun");
 INSERT INTO PERSON(name,message) values("Joe","Hey this is Joe");
