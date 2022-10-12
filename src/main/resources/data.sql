@@ -11,3 +11,12 @@ INSERT INTO SHOPPING_CART(shopping_cart_id, user_id) values(2, 2);
 INSERT INTO SHOPPING_CART_ITEMS(shopping_cart_item_id, shopping_cart_id, bookisbn) values(1, 1, 1234);
 INSERT INTO SHOPPING_CART_ITEMS(shopping_cart_item_id, shopping_cart_id, bookisbn) values(2, 1, 4567);
 INSERT INTO SHOPPING_CART_ITEMS(shopping_cart_item_id, shopping_cart_id, bookisbn) values(3, 2, 1000);
+DELETE FROM BOOK;
+DELETE FROM AUTHOR;
+
+INSERT INTO AUTHOR(aFName,aLName,bio,a_Publisher) values ("Jane","Doe","Lorem Ipsum Verbatum","Bogus Inc.");
+INSERT INTO AUTHOR(aFName,aLName,bio,a_Publisher) values ("John","Doe","If Life was just a Dream", "Chex LLC");
+	   
+INSERT INTO BOOK(isbn,b_Name,b_Desc,b_Price,authorID,genre,publisher,pub_Year,s_Copies) values ("1234567890123","When I Dream Of Cheese","A book about a cheese-loving man.",19.99,2,"Fiction","Chex LLC","3034",46000);
+INSERT INTO BOOK(isbn,b_Name,b_Desc,b_Price,authorID,genre,publisher,pub_Year,s_Copies) values ("0000000000000","The Realm of Placeholders","The world told through the eyes of the mundane",34.49,1,"Memoir","PartyHard LLC", "2022",500000);
+
