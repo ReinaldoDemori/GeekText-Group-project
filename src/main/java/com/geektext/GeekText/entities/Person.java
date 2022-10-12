@@ -1,5 +1,6 @@
 package com.geektext.GeekText.entities;
  
+import javax.persistence.GenerationType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -8,7 +9,7 @@ import javax.persistence.Id;
 public class Person {
  
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
  
     private String name;
