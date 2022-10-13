@@ -40,5 +40,23 @@ INSERT INTO BOOK(isbn,b_Name,b_Desc,b_Price,authorID,genre,publisher,pub_Year,s_
 INSERT INTO BOOK(isbn,b_Name,b_Desc,b_Price,authorID,genre,publisher,pub_Year,s_Copies) values ("4504371650743","Sunny and Cloud","A children's book about staying positive.",17.49,7,"Fantasy","GreenBean Inc.", "2000",501300);
 INSERT INTO BOOK(isbn,b_Name,b_Desc,b_Price,authorID,genre,publisher,pub_Year,s_Copies) values ("0194758415878","Potion Omnibus!","The Official SpellBook from the Hit Show Tweeny Magic!",4.99,5,"Fiction","Bogus Inc.","3014",413000);
 INSERT INTO BOOK(isbn,b_Name,b_Desc,b_Price,authorID,genre,publisher,pub_Year,s_Copies) values ("0018934798793","Leaves N Shadows","Where did all the trees go?",6.49,3,"Horror","PartyHard LLC", "3014",7438000);
+INSERT INTO BOOK(isbn,b_Name,b_Desc,b_Price,authorID,genre,publisher,pub_Year,s_Copies) values ("3141592653589","Euclid's Elements","It is a collection of definitions, postulates, propositions (theorems and constructions), and mathematical proofs of the propositions",9.99,1,"Mathematics","N/A", "300 BC",500000);
+
+/* Rank Data */
+INSERT INTO RANK(rank, isbn) values(1, "1234567890123");
+INSERT INTO RANK(rank, isbn) values(2, "0000000000000");
+INSERT INTO RANK(rank, isbn) values(3, "1836218362122");
+INSERT INTO RANK(rank, isbn) values(4, "1898923898311");
+INSERT INTO RANK(rank, isbn) values(5, "0912309138823");
+INSERT INTO RANK(rank, isbn) values(6, "1230983091829");
+INSERT INTO RANK(rank, isbn) values(7, "7374939873843");
+INSERT INTO RANK(rank, isbn) values(8, "6576819748374");
+INSERT INTO RANK(rank, isbn) values(9, "2364032645374");
+INSERT INTO RANK(rank, isbn) values(10, "4504371650743");
+INSERT INTO RANK(rank, isbn) values(11, "0194758415878");
+INSERT INTO RANK(rank, isbn) values(12, "0018934798793");
+INSERT INTO RANK(rank, isbn) values(13, "3141592653589");
+
+
 
 /* Random Data :[BLANK] instances: */
