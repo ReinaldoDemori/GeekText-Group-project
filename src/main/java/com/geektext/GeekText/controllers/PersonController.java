@@ -18,7 +18,7 @@ class PersonController {
 
       // Aggregate root
   // tag::get-aggregate-root[]
-  @GetMapping("/Users")
+  @GetMapping("/users")
   List<Person> all() {
     return repository.findAll();
   }
@@ -47,7 +47,7 @@ class PersonController {
         return repository.save(person);
       })
       .orElseGet(() -> {
-        newPerson.setUsername(username);
+        //newPerson.setUsername(username);
         return repository.save(newPerson);
       });
   }

@@ -13,6 +13,16 @@ public class CreditCard {
     private String expDate;
     private int secCode;
 
+    public CreditCard() {
+    }
+
+    public CreditCard(String creditNumber, Person owner, String expDate, int secCode){
+        this.creditNumber = creditNumber;
+        this.owner = owner;
+        this.expDate = expDate;
+        this.secCode = secCode;
+    }
+
     /**
      * @return the owner
      */

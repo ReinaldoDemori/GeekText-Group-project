@@ -11,9 +11,14 @@ public class Person {
     private String password;
     private String name;
     private String address;
+    @OneToOne
+    @JoinColumn(name = "credit_card_credit_number")
     private CreditCard creditCard;
     @OneToMany(fetch = FetchType.LAZY)
     private LinkedList<CreditCard> creditCards;
+
+    public Person() {
+    }
 
     public Person(String username, String password, String name, String address){
 
@@ -29,13 +34,6 @@ public class Person {
      */
     public String getUsername() {
         return username;
-    }
-
-    /**
-     * @param username the username to set
-     */
-    public void setUsername(String username) {
-        this.username = username;
     }
 
     /**
