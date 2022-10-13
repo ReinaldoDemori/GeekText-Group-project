@@ -20,4 +20,8 @@ INSERT INTO AUTHOR(aFName,aLName,bio,a_Publisher) values ("John","Doe","If Life 
 
 INSERT INTO BOOK(isbn,b_Name,b_Desc,b_Price,authorID,genre,publisher,pub_Year,s_Copies) values ("1234567890123","When I Dream Of Cheese","A book about a cheese-loving man.",19.99,2,"Fiction","Chex LLC","3034",46000);
 INSERT INTO BOOK(isbn,b_Name,b_Desc,b_Price,authorID,genre,publisher,pub_Year,s_Copies) values ("0000000000000","The Realm of Placeholders","The world told through the eyes of the mundane",34.49,1,"Memoir","PartyHard LLC", "2022",500000);
+INSERT INTO BOOK(isbn,b_Name,b_Desc,b_Price,authorID,genre,publisher,pub_Year,s_Copies) values
+ ("3141592653589","Euclid's Elements","It is a collection of definitions, postulates, propositions (theorems and constructions), and mathematical proofs of the propositions",9.99,1,"Mathematics","N/A", "300 BC",500000);
 
+INSERT INTO RANK(rank, isbn) values(1, "1234567890123");
+INSERT INTO RANK(rank, isbn) values(2, "3141592653589");
