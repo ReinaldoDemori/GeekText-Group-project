@@ -18,43 +18,43 @@ class PersonController {
 
       // Aggregate root
   // tag::get-aggregate-root[]
-  @GetMapping("/persons")
+  @GetMapping("/users")
   List<Person> all() {
     return repository.findAll();
   }
   // end::get-aggregate-root[]
 
-  @PostMapping("/persons")
+  @PostMapping("/users")
   Person newPerson(@RequestBody Person newPerson) {
     return repository.save(newPerson);
   }
 
   // Single item
   
-  @GetMapping("/persons/{id}")
-  Person one(@PathVariable Integer id) {
+  @GetMapping("/users/{username}")
+  Person one(@PathVariable String username) {
     
-    return repository.findById(id)
-      .orElseThrow(() -> new PersonNotFoundException(id)); //need to create exception file
+    return repository.findById(username)
+      .orElseThrow(() -> new PersonNotFoundException(username)); //need to create exception file
   }
 
-  @PutMapping("/persons/{id}")
-  Person replacePerson(@RequestBody Person newPerson, @PathVariable Integer id) {
+  @PutMapping("/users/{username}")
+  Person replacePerson(@RequestBody Person newPerson, @PathVariable String username) {
     
-    return repository.findById(id)
+    return repository.findById(username)
       .map(person -> {
         person.setName(newPerson.getName());
         return repository.save(person);
       })
       .orElseGet(() -> {
-        newPerson.setId(id);
+        //newPerson.setUsername(username);
         return repository.save(newPerson);
       });
   }
 
   @DeleteMapping("/persons/{id}")
-  void deletePerson(@PathVariable Integer id) {
-    repository.deleteById(id);
+  void deletePerson(@PathVariable String username) {
+    repository.deleteById(username);
   }
 
     
