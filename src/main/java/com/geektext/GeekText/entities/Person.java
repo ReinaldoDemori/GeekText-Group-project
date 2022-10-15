@@ -5,17 +5,15 @@ import java.util.LinkedList;
 
 @Entity
 public class Person {
- 
+
     @Id
     private String username;
     private String password;
     private String name;
     private String address;
-    @OneToOne
-    @JoinColumn(name = "credit_card_credit_number")
-    private CreditCard creditCard;
-    @OneToMany(fetch = FetchType.LAZY)
-    private LinkedList<CreditCard> creditCards;
+    //private CreditCard creditCard;
+    //@OneToMany(fetch = FetchType.LAZY)
+    //private LinkedList<CreditCard> creditCards;
 
     public Person() {
     }
@@ -81,14 +79,14 @@ public class Person {
     /**
      * @return the credit card
      */
-    public CreditCard getCreditCard() {
+    /*public CreditCard getCreditCard() {
         return creditCard;
-    }
+    }*/
 
     /**
      * @param creditCard the credit card to set
      */
-    public void setCreditCard(CreditCard creditCard) {
+    /*public void setCreditCard(CreditCard creditCard) {
         this.creditCard = creditCard;
     }
 
@@ -102,5 +100,5 @@ public class Person {
 
     public void removeCreditCards(CreditCard card){
         creditCards.remove(card);
-    }
+    }*/
 }
