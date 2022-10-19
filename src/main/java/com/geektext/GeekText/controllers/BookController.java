@@ -36,6 +36,11 @@ public class BookController {
       return repository.findById(isbn)
         .orElseThrow(() -> new BookNotFoundException(isbn)); //need to create exception file
     }
+    
+    @GetMapping("/books/author/{authorId}")
+    List<Book> findbyAuthorID(@PathVariable int authorId) {
+        return repository.findByAuthorID(authorId);
+    }
 
     @PutMapping("/books/{isbn}")
     Book replaceBook(@RequestBody Book newBook, @PathVariable String isbn) {
