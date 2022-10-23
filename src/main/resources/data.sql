@@ -23,5 +23,6 @@ INSERT INTO BOOK(isbn,b_Name,b_Desc,b_Price,authorID,genre,publisher,pub_Year,s_
 INSERT INTO BOOK(isbn,b_Name,b_Desc,b_Price,authorID,genre,publisher,pub_Year,s_Copies) values
  ("3141592653589","Euclid's Elements","It is a collection of definitions, postulates, propositions (theorems and constructions), and mathematical proofs of the propositions",9.99,1,"Mathematics","N/A", "300 BC",500000);
 
+DELETE FROM RANK;
 INSERT INTO RANK(rank, isbn) values(1, "1234567890123");
 INSERT INTO RANK(rank, isbn) values(2, "3141592653589");

@@ -7,17 +7,18 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.geektext.GeekText.entities.Rank;
+import com.geektext.GeekText.repositories.RankRepository;
 
 @RestController
 public class RankController {
-    JpaRepository<Rank, Integer> ranks;
+    RankRepository ranks;
 
-    public RankController(JpaRepository<Rank, Integer> ranks) {
+    public RankController(RankRepository ranks) {
         this.ranks = ranks;
     }
     
     @GetMapping("/top")
     List<Rank> top() {
-        return ranks.findAll();
+        return ranks.getRanking(1);
     }
 }
