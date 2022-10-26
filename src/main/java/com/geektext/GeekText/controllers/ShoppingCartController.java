@@ -46,9 +46,9 @@ class ShoppingCartController{
 
     //Replace shopping cart
     @PutMapping("/shoppingcarts/{shoppingCartId}")
-    ShoppingCart replaceShoppingCart(@RequestBody ShoppingCart newShoppingCart, @PathVariable Integer shoppingCartID){
+    ShoppingCart replaceShoppingCart(@RequestBody ShoppingCart newShoppingCart, @PathVariable Integer shoppingCartId){
 
-        return repository.findById(shoppingCartID)
+        return repository.findById(shoppingCartId)
             .map(shoppingCart -> {
                 shoppingCart.setUserId(newShoppingCart.getUserId());
                 return repository.save(shoppingCart);

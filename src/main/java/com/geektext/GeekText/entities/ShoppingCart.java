@@ -2,15 +2,13 @@ package com.geektext.GeekText.entities;
  
 import java.sql.Date;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class ShoppingCart {
     
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer shoppingCartId;
 
     private Integer userId;
