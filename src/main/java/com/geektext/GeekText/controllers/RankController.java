@@ -4,6 +4,8 @@ import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.geektext.GeekText.entities.Rank;
@@ -17,8 +19,9 @@ public class RankController {
         this.ranks = ranks;
     }
     
-    @GetMapping("/top")
-    List<Rank> top() {
-        return ranks.getRanking(1);
+    @GetMapping("/top/{page}")
+    @ResponseBody
+    List<Rank> top(@PathVariable("page") int page) {
+        return ranks.getRanking(page * 5);
     }
 }

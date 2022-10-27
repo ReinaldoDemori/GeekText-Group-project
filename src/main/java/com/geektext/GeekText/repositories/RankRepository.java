@@ -9,6 +9,6 @@ import com.geektext.GeekText.entities.Rank;
 
 public interface RankRepository extends JpaRepository<Rank, Integer> {
 
-    @Query("select r from Rank r where r.rank >= ?1 order by r.rank")
+    @Query("select r from Rank r where r.rank >= ?1 and r.rank < ?1 + 5 order by r.rank")
     List<Rank> getRanking(Integer start);
 }
