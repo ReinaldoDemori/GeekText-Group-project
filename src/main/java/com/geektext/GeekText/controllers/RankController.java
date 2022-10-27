@@ -23,4 +23,10 @@ public class RankController {
     List<Rank> top(@PathVariable("page") int page) {
         return ranks.getRanking(page * 5);
     }
+
+    @GetMapping("/rank/genre/{genre}/{page}")
+    @ResponseBody
+    List<Rank> topGenre(@PathVariable("page") int page, @PathVariable("genre") String genre) {
+        return ranks.getRankingGenre(page * 5, genre);
+    }
 }
