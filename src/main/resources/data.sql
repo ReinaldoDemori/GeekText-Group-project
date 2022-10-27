@@ -27,7 +27,7 @@ INSERT INTO AUTHOR(aFName,aLName,bio,a_Publisher) values ("Mary","Jean","Enjoys 
 INSERT INTO AUTHOR(aFName,aLName,bio,a_Publisher) values ("Mary","Clark","Manga and Comics Enthusiast.", "Chex LLC");
 INSERT INTO AUTHOR(aFName,aLName,bio,a_Publisher) values ("Lauren","Clark","She's always sunny side up!","GreenBean Inc.");
 
-/* Book Data :12 instances: */
+/* Book Data :13 instances: */
 INSERT INTO BOOK(isbn,b_Name,b_Desc,b_Price,authorID,genre,publisher,pub_Year,s_Copies) values ("1234567890123","When I Dream Of Cheese","A book about a cheese-loving man.",19.99,2,"Fiction","Chex LLC","3034",46000);
 INSERT INTO BOOK(isbn,b_Name,b_Desc,b_Price,authorID,genre,publisher,pub_Year,s_Copies) values ("0000000000000","The Realm of Placeholders","The world told through the eyes of the mundane",34.49,1,"Memoir","PartyHard LLC", "2022",500000);
 INSERT INTO BOOK(isbn,b_Name,b_Desc,b_Price,authorID,genre,publisher,pub_Year,s_Copies) values ("1836218362122","Badge: As Defined","The judicial life of Phoenix Wrong.",9.99,4,"Autobiography","ACA LLC","2023",1250000);
