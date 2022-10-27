@@ -10,13 +10,13 @@ INSERT INTO person(username,password,name,address) values("fiu@fiu.edu", "12345"
 INSERT INTO person(username,password,name,address) values("dim@gmail.com", "65432", "Jeremy Elbertson", "1054 NW 56th ave");
 
 /* Shopping Cart Data :2 instances: */
-INSERT INTO SHOPPING_CART(shopping_cart_id, user_id) values(1, 1);
-INSERT INTO SHOPPING_CART(shopping_cart_id, user_id) values(2, 2);
+INSERT INTO SHOPPING_CART(user_id) values(1);
+INSERT INTO SHOPPING_CART(user_id) values(2);
 
 /* Shopping Cart Items Data :3 instances: */
-INSERT INTO SHOPPING_CART_ITEMS(shopping_cart_item_id, shopping_cart_id, bookisbn) values(1, 1, 1234);
-INSERT INTO SHOPPING_CART_ITEMS(shopping_cart_item_id, shopping_cart_id, bookisbn) values(2, 1, 4567);
-INSERT INTO SHOPPING_CART_ITEMS(shopping_cart_item_id, shopping_cart_id, bookisbn) values(3, 2, 1000);
+INSERT INTO SHOPPING_CART_ITEMS(shopping_cart_id, bookisbn) values(1, 1234);
+INSERT INTO SHOPPING_CART_ITEMS(shopping_cart_id, bookisbn) values(1, 4567);
+INSERT INTO SHOPPING_CART_ITEMS(shopping_cart_id, bookisbn) values(2, 1000);
 
 /* Author Data :7 instances: */
 INSERT INTO AUTHOR(aFName,aLName,bio,a_Publisher) values ("Jane","Doe","Lorem Ipsum Verbatum","Bogus Inc.");
