@@ -5,12 +5,13 @@ import com.geektext.GeekText.repositories.AuthorRepository;
 import com.geektext.GeekText.entities.Author;
 import com.geektext.GeekText.exceptions.AuthorNotFoundException;
 import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class AuthorController {
-    
-    private final AuthorRepository repository;
+    @Autowired
+    private AuthorRepository repository;
 
     AuthorController(AuthorRepository repository){
         this.repository = repository;
