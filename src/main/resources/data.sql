@@ -9,7 +9,7 @@ DELETE FROM SHOPPING_CART_ITEMS;
 INSERT INTO person(username,password,name,address) values("fiu@fiu.edu", "12345", "Reinaldo Demori", "1054 NW 56th ave");
 INSERT INTO person(username,password,name,address) values("dim@gmail.com", "65432", "Jeremy Elbertson", "1054 NW 56th ave");
 
-/* Shopping Cart Data :2 instnaces: */
+/* Shopping Cart Data :2 instances: */
 INSERT INTO SHOPPING_CART(shopping_cart_id, user_id) values(1, 1);
 INSERT INTO SHOPPING_CART(shopping_cart_id, user_id) values(2, 2);
 
