@@ -18,7 +18,7 @@ public class RankController {
         this.ranks = ranks;
     }
     
-    @GetMapping("/top/{page}")
+    @GetMapping("/rank/top/{page}")
     @ResponseBody
     List<Rank> top(@PathVariable("page") int page) {
         return ranks.getRanking(page * 5);
