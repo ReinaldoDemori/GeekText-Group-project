@@ -62,5 +62,4 @@ INSERT INTO RANK(rank, isbn) values(12, "0018934798793");
 INSERT INTO RANK(rank, isbn) values(13, "3141592653589");
 
 
-
 /* Random Data :[BLANK] instances: */

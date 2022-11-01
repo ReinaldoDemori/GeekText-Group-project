@@ -18,7 +18,6 @@ public class CreditCardController {
     }
 
 
-
     // Aggregate root
     // tag::get-aggregate-root[]
     @GetMapping("/creditcards")

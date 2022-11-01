@@ -10,5 +10,4 @@ public interface CreditCardRepository extends JpaRepository<CreditCard, String> 
     @Query("Select b FROM Person b WHERE b.username.username = ?1")
     List<CreditCard> findByUsername(String username);
 
-
 }
