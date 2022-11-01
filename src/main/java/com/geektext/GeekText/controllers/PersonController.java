@@ -10,52 +10,52 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 class PersonController {
 
-    private final PersonRepository repository;
+    private  PersonRepository repository;
 
     PersonController(PersonRepository repository){
         this.repository = repository;
     }
 
-      // Aggregate root
-  // tag::get-aggregate-root[]
-  @GetMapping("/users")
-  List<Person> all() {
-    return repository.findAll();
-  }
-  // end::get-aggregate-root[]
+    // Aggregate root
+    // tag::get-aggregate-root[]
+    @GetMapping("/users")
+    List<Person> all() {
+        return repository.findAll();
+    }
+    // end::get-aggregate-root[]
 
-  @PostMapping("/users")
-  Person newPerson(@RequestBody Person newPerson) {
-    return repository.save(newPerson);
-  }
-
-  // Single item
-  
-  @GetMapping("/users/{username}")
-  Person one(@PathVariable String username) {
-    
-    return repository.findById(username)
-      .orElseThrow(() -> new PersonNotFoundException(username)); //need to create exception file
-  }
-
-  @PutMapping("/users/{username}")
-  Person replacePerson(@RequestBody Person newPerson, @PathVariable String username) {
-    
-    return repository.findById(username)
-      .map(person -> {
-        person.setName(newPerson.getName());
-        return repository.save(person);
-      })
-      .orElseGet(() -> {
-        //newPerson.setUsername(username);
+    @PostMapping("/users")
+    Person newPerson(@RequestBody Person newPerson) {
         return repository.save(newPerson);
-      });
-  }
+    }
 
-  @DeleteMapping("/persons/{id}")
-  void deletePerson(@PathVariable String username) {
-    repository.deleteById(username);
-  }
+    // Single item
 
-    
+    @GetMapping("/users/{username}")
+    Person one(@PathVariable String username) {
+
+        return repository.findById(username)
+                .orElseThrow(() -> new PersonNotFoundException(username)); //need to create exception file
+    }
+
+    @PutMapping("/users/{username}")
+    Person replacePerson(@RequestBody Person newPerson, @PathVariable String username) {
+
+        return repository.findById(username)
+                .map(person -> {
+                    person.setName(newPerson.getName());
+                    return repository.save(person);
+                })
+                .orElseGet(() -> {
+                    //newPerson.setUsername(username);
+                    return repository.save(newPerson);
+                });
+    }
+
+    @DeleteMapping("/users/{username}")
+    void deletePerson(@PathVariable String username) {
+        repository.deleteById(username);
+    }
+
+
 }

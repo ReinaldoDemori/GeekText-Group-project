@@ -6,10 +6,11 @@ import javax.persistence.*;
 public class CreditCard {
 
     @Id
-    private String creditNumber;
-    @ManyToOne(fetch = FetchType.LAZY)
+    private String credit_number;
+
+    @ManyToOne(targetEntity = Person.class, cascade = CascadeType.ALL)
     @JoinColumn(name = "username")
-    private Person owner;
+    private Person username;
     private String expDate;
     private int secCode;
 
@@ -17,38 +18,38 @@ public class CreditCard {
     }
 
     public CreditCard(String creditNumber, Person owner, String expDate, int secCode){
-        this.creditNumber = creditNumber;
-        this.owner = owner;
+        this.credit_number = creditNumber;
+        this.username = owner;
         this.expDate = expDate;
         this.secCode = secCode;
     }
 
     /**
-     * @return the owner
+     * @return the username
      */
-    public Person getOwner() {
-        return owner;
+    public Person getUsername() {
+        return username;
     }
 
     /**
-     * @param owner the owner to set
+     * @param username the username to set
      */
-    public void setOwner(Person owner) {
-        this.owner = owner;
+    public void setUsername(Person username) {
+        this.username = username;
     }
 
     /**
      * @return the credit number
      */
     public String getCreditNumber() {
-        return creditNumber;
+        return credit_number;
     }
 
     /**
      * @param creditNumber the credit number to set
      */
     public void setCreditNumber(String creditNumber) {
-        this.creditNumber = creditNumber;
+        this.credit_number = creditNumber;
     }
 
     /**
