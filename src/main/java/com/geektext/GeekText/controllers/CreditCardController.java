@@ -4,22 +4,21 @@ import java.util.List;
 
 import com.geektext.GeekText.entities.CreditCard;
 import com.geektext.GeekText.repositories.CreditCardRepository;
-import com.geektext.GeekText.exceptions.PersonNotFoundException;
+import com.geektext.GeekText.exceptions.CreditCardNotFoundException;
 
 import org.springframework.web.bind.annotation.*;
 
+@RestController
 public class CreditCardController {
 
 
     private CreditCardRepository repository;
 
-    void CreditCardControllerController(CreditCardRepository repository){
+    CreditCardController(CreditCardRepository repository){
         this.repository = repository;
     }
 
-    public CreditCardController(CreditCardRepository repository) {
-        this.repository = repository;
-    }
+
 
     // Aggregate root
     // tag::get-aggregate-root[]
@@ -40,26 +39,32 @@ public class CreditCardController {
     CreditCard one(@PathVariable String creditnumber) {
 
         return repository.findById(creditnumber)
-                .orElseThrow(() -> new PersonNotFoundException(creditnumber)); //need to create exception file
+                .orElseThrow(() -> new CreditCardNotFoundException(creditnumber)); //need to create exception file
     }
 
-    @PutMapping("/users/{username}")
-    CreditCard replacePerson(@RequestBody CreditCard newCard, @PathVariable String creditNumber) {
+    @PutMapping("/users/{creditnumber}")
+    CreditCard replaceCreditNumber(@RequestBody CreditCard newCard, @PathVariable String creditNumber) {
 
         return repository.findById(creditNumber)
-                .map(person -> {
-                    person.setCreditNumber(newCard.getCreditNumber());
+                .map(creditCard -> {
+                    creditCard.setUsername(newCard.getUsername());
                     return repository.save(newCard);
                 })
                 .orElseGet(() -> {
-                    //newPerson.setUsername(username);
+
+                    newCard.setCreditNumber(creditNumber);
                     return repository.save(newCard);
                 });
     }
 
     @DeleteMapping("/persons/{id}")
-    void deletePerson(@PathVariable String username) {
+    void deleteCreditCard(@PathVariable String username) {
         repository.deleteById(username);
+    }
+
+    @GetMapping("/creditcards/user/{username}")
+    List<CreditCard> findByUsername(@PathVariable String username){
+        return repository.findByUsername(username);
     }
 
 

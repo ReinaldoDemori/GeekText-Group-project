@@ -11,9 +11,7 @@ public class Person {
     private String password;
     private String name;
     private String address;
-    //private CreditCard creditCard;
-    //@OneToMany(fetch = FetchType.LAZY)
-    //private LinkedList<CreditCard> creditCards;
+
 
     public Person() {
     }
@@ -79,26 +77,5 @@ public class Person {
     /**
      * @return the credit card
      */
-    /*public CreditCard getCreditCard() {
-        return creditCard;
-    }*/
 
-    /**
-     * @param creditCard the credit card to set
-     */
-    /*public void setCreditCard(CreditCard creditCard) {
-        this.creditCard = creditCard;
-    }
-
-    public LinkedList<CreditCard> getCreditCards() {
-        return creditCards;
-    }
-
-    public void addCreditCards(CreditCard card) {
-        creditCards.add(card);
-    }
-
-    public void removeCreditCards(CreditCard card){
-        creditCards.remove(card);
-    }*/
 }
