@@ -4,11 +4,12 @@ import java.util.List;
 import com.geektext.GeekText.entities.Book;
 import com.geektext.GeekText.exceptions.BookNotFoundException;
 import com.geektext.GeekText.repositories.BookRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class BookController {
-
+    @Autowired
     private final BookRepository repository;
 
     BookController(BookRepository repository){
@@ -35,6 +36,11 @@ public class BookController {
 
       return repository.findById(isbn)
         .orElseThrow(() -> new BookNotFoundException(isbn)); //need to create exception file
+    }
+    
+    @GetMapping("/books/author/{authorId}")
+    List<Book> findbyAuthorID(@PathVariable int authorId) {
+        return repository.findByAuthorID(authorId);
     }
 
     @PutMapping("/books/{isbn}")
