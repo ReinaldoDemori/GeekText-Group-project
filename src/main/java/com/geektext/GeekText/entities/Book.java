@@ -24,7 +24,7 @@ public class Book {
     
     private int sCopies;
     
-    @ManyToOne(targetEntity = Author.class, cascade = CascadeType.ALL)
+    @ManyToOne(targetEntity = Author.class)
     @JoinColumn(name = "authorid")
     private Author authorID;
 
