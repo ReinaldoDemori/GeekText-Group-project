@@ -80,5 +80,4 @@ public class CreditCard {
         this.secCode = secCode;
     }
 
-
 }

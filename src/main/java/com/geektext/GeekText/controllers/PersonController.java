@@ -57,5 +57,4 @@ class PersonController {
         repository.deleteById(username);
     }
 
-
 }
