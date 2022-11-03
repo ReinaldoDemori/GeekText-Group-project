@@ -1,7 +1,6 @@
 package com.geektext.GeekText.entities;
 
 import javax.persistence.*;
-import java.util.LinkedList;
 
 @Entity
 public class Person {
