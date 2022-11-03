@@ -11,11 +11,11 @@ public class BookRating{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer commentID;
 
-    @ManyToOne(targetEntity = Book.class, cascade = CascadeType.ALL)
+    @ManyToOne(targetEntity = Book.class)
     @JoinColumn(name = "isbn")
     private Book isbn;
 
-    @ManyToOne(targetEntity = Person.class, cascade = CascadeType.ALL)
+    @ManyToOne(targetEntity = Person.class)
     @JoinColumn(name = "username")
     private Person username;
 
