@@ -1,6 +1,4 @@
 package com.geektext.GeekText.entities;
- 
-import java.sql.Date;
 
 import javax.persistence.*;
 
@@ -11,9 +9,10 @@ public class ShoppingCart {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer shoppingCartId;
 
-    private Integer userId;
+    @OneToOne(targetEntity = Person.class)
+    @JoinColumn(name = "username")
+    private Person username;
 
-    //private Date creationDate;
 
     public Integer getShoppingCartId(){
         return shoppingCartId;
@@ -23,16 +22,12 @@ public class ShoppingCart {
         this.shoppingCartId = id;
     }
 
-    public Integer getUserId(){
-        return userId;
+    public Person getUserId(){
+        return username;
     }
 
-    public void setUserId(Integer userId){
-        this.userId = userId;
+    public void setUserId(Person username){
+        this.username = username;
     }
-
-    /*public Date getCreationDate(){
-        return creationDate;
-    }*/
 
 }

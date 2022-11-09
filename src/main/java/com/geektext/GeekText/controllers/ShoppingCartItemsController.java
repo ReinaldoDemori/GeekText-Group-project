@@ -5,6 +5,7 @@ import java.util.List;
 import com.geektext.GeekText.repositories.ShoppingCartItemsRepository;
 import com.geektext.GeekText.entities.ShoppingCartItems;
 import com.geektext.GeekText.exceptions.ShoppingCartItemNotFoundException;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class ShoppingCartItemsController {
-    
+    @Autowired
     private final ShoppingCartItemsRepository repository;
 
     ShoppingCartItemsController(ShoppingCartItemsRepository repository){

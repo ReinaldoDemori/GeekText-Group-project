@@ -5,6 +5,7 @@ import java.util.List;
 import com.geektext.GeekText.repositories.ShoppingCartRepository;
 import com.geektext.GeekText.entities.ShoppingCart;
 import com.geektext.GeekText.exceptions.ShoppingCartNotFoundException;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 class ShoppingCartController{
-
+    @Autowired
     private final ShoppingCartRepository repository;
 
     ShoppingCartController(ShoppingCartRepository repository){
@@ -59,7 +60,7 @@ class ShoppingCartController{
     }
 
     //delete a shoppig cart by it's ID
-    @DeleteMapping("/shoppingcarts/{shoppingCardId}")
+    @DeleteMapping("/shoppingcarts/{shoppingCartId}")
     void deleteShoppingCart(@PathVariable Integer shoppingCartId){
         repository.deleteById(shoppingCartId);
     }

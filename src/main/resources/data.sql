@@ -7,21 +7,23 @@ DELETE FROM SHOPPING_CART;
 DELETE FROM SHOPPING_CART_ITEMS;
 DELETE FROM BOOK_RATING;
 
-/* Person Data :2 instances: */
+/* Person Data :4 instances: */
 INSERT INTO person(username,password,name,address) values("fiu@fiu.edu", "12345", "Reinaldo Demori", "1054 NW 56th ave");
 INSERT INTO person(username,password,name,address) values("dim@gmail.com", "65432", "Jeremy Elbertson", "1054 NW 56th ave");
+INSERT INTO person(username,password,name,address) values("hello@fiu.edu", "78990", "John Doe", "789 Nw 108 St");
+INSERT INTO person(username,password,name,address) values("world@gmail.com", "56789", "Jane Doe", "987 SW 109 St");
 
 INSERT INTO credit_card(credit_number, username, exp_date, sec_code) values ("123456789", "fiu@fiu.edu", "12/30", 123);
 
 
 /* Shopping Cart Data :2 instances: */
-INSERT INTO SHOPPING_CART(user_id) values(1);
-INSERT INTO SHOPPING_CART(user_id) values(2);
+INSERT INTO SHOPPING_CART(username) values("fiu@fiu.edu");
+INSERT INTO SHOPPING_CART(username) values("dim@gmail.com");
 
 /* Shopping Cart Items Data :3 instances: */
-INSERT INTO SHOPPING_CART_ITEMS(shopping_cart_id, bookisbn) values(1, 1234);
-INSERT INTO SHOPPING_CART_ITEMS(shopping_cart_id, bookisbn) values(1, 4567);
-INSERT INTO SHOPPING_CART_ITEMS(shopping_cart_id, bookisbn) values(2, 1000);
+INSERT INTO SHOPPING_CART_ITEMS(shopping_cart_id, isbn) values(1, "1234567890123");
+INSERT INTO SHOPPING_CART_ITEMS(shopping_cart_id, isbn) values(1, "0000000000000");
+INSERT INTO SHOPPING_CART_ITEMS(shopping_cart_id, isbn) values(2, "1836218362122");
 
 /* Author Data :7 instances: */
 INSERT INTO AUTHOR(aFName,aLName,bio,a_Publisher) values ("Jane","Doe","Lorem Ipsum Verbatum","Bogus Inc.");

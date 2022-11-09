@@ -2,10 +2,7 @@ package com.geektext.GeekText.entities;
  
 import java.sql.Date;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class ShoppingCartItems {
@@ -14,11 +11,13 @@ public class ShoppingCartItems {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer shoppingCartItemId;
 
-    private Integer shoppingCartId;
+    @ManyToOne(targetEntity = ShoppingCart.class)
+    @JoinColumn(name = "shoppingCartId")
+    private ShoppingCart shoppingCartId;
 
-    private Integer bookISBN;
-
-    //private Date creationDate;
+    @OneToOne(targetEntity = Book.class)
+    @JoinColumn(name = "isbn")
+    private Book isbn;
 
     public Integer getShoppingCartItemId(){
         return shoppingCartItemId;
@@ -28,24 +27,20 @@ public class ShoppingCartItems {
         this.shoppingCartItemId = id;
     }
 
-    public Integer getShoppingCartId(){
+    public ShoppingCart getShoppingCartId(){
         return shoppingCartId;
     }
 
-    public void setShoppingCartId(Integer id){
+    public void setShoppingCartId(ShoppingCart id){
         this.shoppingCartId = id;
     }
 
-    public Integer getBookISBN(){
-        return bookISBN;
+    public Book getBookISBN(){
+        return isbn;
     }
 
-    public void setBookISBN(Integer bookISBN){
-        this.bookISBN = bookISBN;
+    public void setBookISBN(Book isbn){
+        this.isbn = isbn;
     }
-
-    /*public Date getCreationDate(){
-        return creationDate;
-    }*/
 
 }
