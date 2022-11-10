@@ -1,7 +1,9 @@
 package com.geektext.GeekText.controllers;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
+import org.hibernate.mapping.Collection;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -21,12 +23,18 @@ public class RankController {
     @GetMapping("/rank/top/{page}")
     @ResponseBody
     List<Rank> top(@PathVariable("page") int page) {
-        return ranks.getRanking(page * 5);
+        List<Rank> ranking = ranks.getRanking();
+        int lower = Math.min(ranking.size(), page * 5);
+        int upper = Math.min(ranking.size(), (page + 1) * 5);
+        return ranking.subList(lower, upper);
     }
 
     @GetMapping("/rank/genre/{genre}/{page}")
     @ResponseBody
     List<Rank> topGenre(@PathVariable("page") int page, @PathVariable("genre") String genre) {
-        return ranks.getRankingGenre(page * 5, genre);
+        List<Rank> ranking = ranks.getRanking().stream().filter(rank -> rank.book.getGenre().equalsIgnoreCase(genre)).collect(Collectors.toList());
+        int lower = Math.min(ranking.size(), page * 5);
+        int upper = Math.min(ranking.size(), (page + 1) * 5);
+        return ranking.subList(lower, upper);
     }
 }
