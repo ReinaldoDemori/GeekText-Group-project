@@ -36,4 +36,15 @@ public class RankController {
         int upper = Math.min(ranking.size(), (page + 1) * 5);
         return ranking.subList(lower, upper);
     }
+
+
+    @GetMapping("/rank/sold/{page}")
+    @ResponseBody
+    List<Book> topSold(@PathVariable("page") int page) {
+        List<Book> ranking = books.getBySold();
+        int lower = Math.min(ranking.size(), page * 5);
+        int upper = Math.min(ranking.size(), (page + 1) * 5);
+        return ranking.subList(lower, upper);
+    }
+    
 }

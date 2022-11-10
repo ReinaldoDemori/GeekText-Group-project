@@ -13,4 +13,7 @@ public interface BookRepository extends JpaRepository<Book, String> {
 
     @Query("Select book from Book book order by book.ranking")
     List<Book> getByRanking();
+
+    @Query("Select book from Book book order by book.sCopies desc")
+    List<Book> getBySold();
 }
