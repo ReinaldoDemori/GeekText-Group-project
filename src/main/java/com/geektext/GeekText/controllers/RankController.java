@@ -19,22 +19,24 @@ public class RankController {
         this.books = books;
     }
 
+    static <A> List<A> page(List<A> items, int page) {
+        int lower = Math.min(items.size(), page * 5);
+        int upper = Math.min(items.size(), (page + 1) * 5);
+        return items.subList(lower, upper);
+    }
+
     @GetMapping("/rank/top/{page}")
     @ResponseBody
     List<Book> top(@PathVariable("page") int page) {
         List<Book> ranking = books.getByRanking();
-        int lower = Math.min(ranking.size(), page * 5);
-        int upper = Math.min(ranking.size(), (page + 1) * 5);
-        return ranking.subList(lower, upper);
+        return page(ranking, page);
     }
 
     @GetMapping("/rank/genre/{genre}/{page}")
     @ResponseBody
     List<Book> topGenre(@PathVariable("page") int page, @PathVariable("genre") String genre) {
         List<Book> ranking = books.getByRanking().stream().filter(book -> book.getGenre().equalsIgnoreCase(genre)).collect(Collectors.toList());
-        int lower = Math.min(ranking.size(), page * 5);
-        int upper = Math.min(ranking.size(), (page + 1) * 5);
-        return ranking.subList(lower, upper);
+        return page(ranking, page);
     }
 
 
@@ -42,9 +44,7 @@ public class RankController {
     @ResponseBody
     List<Book> topSold(@PathVariable("page") int page) {
         List<Book> ranking = books.getBySold();
-        int lower = Math.min(ranking.size(), page * 5);
-        int upper = Math.min(ranking.size(), (page + 1) * 5);
-        return ranking.subList(lower, upper);
+        return page(ranking, page);
     }
     
 }
