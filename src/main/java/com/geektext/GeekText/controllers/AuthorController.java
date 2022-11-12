@@ -17,45 +17,25 @@ public class AuthorController {
         this.repository = repository;
     }
     
-    // Aggregate root
-    // tag::get-aggregate-root[]
+    
+    // View All Authors
     @GetMapping("/authors")
     List<Author> all() {
       return repository.findAll();
     }
-    // end::get-aggregate-root[]
 
+    // Create Author
     @PostMapping("/authors")
     Author newAuthor (@RequestBody Author newAuthor) {
       return repository.save(newAuthor);
     }
 
-    // Single item
-
+    // View Single Author
     @GetMapping("/authors/{authorID}")
     Author one(@PathVariable Integer authorID) {
 
       return repository.findById(authorID)
-        .orElseThrow(() -> new AuthorNotFoundException(authorID)); //need to create exception file
-    }
-
-    @PutMapping("/authors/{authorID}")
-    Author replaceAuthor(@RequestBody Author newAuthor, @PathVariable Integer authorID) {
-
-      return repository.findById(authorID)
-        .map(author -> {
-          author.setAFName(newAuthor.getAFName());
-          return repository.save(author);
-        })
-        .orElseGet(() -> {
-          newAuthor.setAuthorID(authorID);
-          return repository.save(newAuthor);
-        });
-    }
-
-    @DeleteMapping("/authors/{authorID}")
-    void deleteAuthor(@PathVariable Integer authorID) {
-      repository.deleteById(authorID);
+        .orElseThrow(() -> new AuthorNotFoundException(authorID));
     }
 
 }
