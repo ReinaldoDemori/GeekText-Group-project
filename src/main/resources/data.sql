@@ -2,9 +2,10 @@
 DELETE FROM BOOK;
 DELETE FROM AUTHOR;
 DELETE FROM PERSON;
+DELETE FROM CREDIT_CARD;
 DELETE FROM SHOPPING_CART;
 DELETE FROM SHOPPING_CART_ITEMS;
-DELETE FROM credit_card;
+DELETE FROM BOOK_RATING;
 
 /* Person Data :2 instances: */
 INSERT INTO person(username,password,name,address) values("fiu@fiu.edu", "12345", "Reinaldo Demori", "1054 NW 56th ave");
@@ -45,6 +46,11 @@ INSERT INTO BOOK(isbn,b_Name,b_Desc,b_Price,authorID,genre,publisher,pub_Year,s_
 INSERT INTO BOOK(isbn,b_Name,b_Desc,b_Price,authorID,genre,publisher,pub_Year,s_Copies) values ("0194758415878","Potion Omnibus!","The Official SpellBook from the Hit Show Tweeny Magic!",4.99,5,"Fiction","Bogus Inc.","3014",413000);
 INSERT INTO BOOK(isbn,b_Name,b_Desc,b_Price,authorID,genre,publisher,pub_Year,s_Copies) values ("0018934798793","Leaves N Shadows","Where did all the trees go?",6.49,3,"Horror","PartyHard LLC", "3014",7438000);
 INSERT INTO BOOK(isbn,b_Name,b_Desc,b_Price,authorID,genre,publisher,pub_Year,s_Copies) values ("3141592653589","Euclid's Elements","It is a collection of definitions, postulates, propositions (theorems and constructions), and mathematical proofs of the propositions",9.99,1,"Mathematics","N/A", "300 BC",500000);
+
+/* Book Rating Data :3 instances: */
+INSERT INTO BOOK_RATING(comment,rating,isbn,username) values ("very good book",5.0,"0000000000000","fiu@fiu.edu");
+INSERT INTO BOOK_RATING(comment,rating,isbn,username) values ("very cheesy book",3.0,"1234567890123","dim@gmail.com");
+INSERT INTO BOOK_RATING(comment,rating,isbn,username) values ("very cool book",5.0,"1836218362122","fiu@fiu.edu");
 
 /* Rank Data */
 DELETE FROM RANK;

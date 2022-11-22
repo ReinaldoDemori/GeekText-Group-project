@@ -8,25 +8,25 @@ import javax.persistence.*;
 public class BookRating{
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer commentID;
 
-    @ManyToOne(targetEntity = Book.class, cascade = CascadeType.ALL)
+    @ManyToOne(targetEntity = Book.class)
     @JoinColumn(name = "isbn")
     private Book isbn;
 
-    @ManyToOne(targetEntity = Person.class, cascade = CascadeType.ALL)
-    @JoinColumn(name = "id")
-    private Person personID;
+    @ManyToOne(targetEntity = Person.class)
+    @JoinColumn(name = "username")
+    private Person username;
 
     private float rating;
 
     private String comment;
 
     public BookRating() {}
-    public BookRating(Book isbn, Person personID, float rating, String comment) {
+    public BookRating(Book isbn, Person username, float rating, String comment) {
         this.isbn = isbn;
-        this.personID = personID;
+        this.username = username;
         this.rating = rating;
         this.comment = comment;
     }
@@ -47,11 +47,11 @@ public class BookRating{
     }
 
     public Person getPersonID() {
-        return this.personID;
+        return this.username;
     }
 
-    public void setPersonID(Person personID) {
-        this.personID = personID;
+    public void setPersonID(Person username) {
+        this.username = username;
     }
 
     public float getRating() {

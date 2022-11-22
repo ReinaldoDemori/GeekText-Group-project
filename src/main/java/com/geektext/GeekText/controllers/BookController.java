@@ -16,21 +16,19 @@ public class BookController {
         this.repository = repository;
     }
     
-    // Aggregate root
-    // tag::get-aggregate-root[]
+    // View All Books
     @GetMapping("/books")
     List<Book> all() {
       return repository.findAll();
     }
-    // end::get-aggregate-root[]
-
+    
+    // Create Book {Must include information of Author in AuthorID}
     @PostMapping("/books")
     Book newBook(@RequestBody Book newBook) {
       return repository.save(newBook);
     }
 
-    // Single item
-
+    //Retrieve Single Book based on ISBN
     @GetMapping("/books/{isbn}")
     Book one(@PathVariable String isbn) {
 
@@ -38,28 +36,13 @@ public class BookController {
         .orElseThrow(() -> new BookNotFoundException(isbn)); //need to create exception file
     }
     
+    //Retrieve Book(s) based on AuthorID
     @GetMapping("/books/author/{authorId}")
     List<Book> findbyAuthorID(@PathVariable int authorId) {
+        if(repository.findByAuthorID(authorId).isEmpty()){
+            throw new BookNotFoundException(authorId);
+        }
         return repository.findByAuthorID(authorId);
-    }
-
-    @PutMapping("/books/{isbn}")
-    Book replaceBook(@RequestBody Book newBook, @PathVariable String isbn) {
-
-      return repository.findById(isbn)
-        .map(book -> {
-          book.setBName(newBook.getBName());
-          return repository.save(book);
-        })
-        .orElseGet(() -> {
-          newBook.setIsbn(isbn);
-          return repository.save(newBook);
-        });
-    }
-
-    @DeleteMapping("/books/{isbn}")
-    void deleteBook(@PathVariable String isbn) {
-      repository.deleteById(isbn);
     }
     
 }
