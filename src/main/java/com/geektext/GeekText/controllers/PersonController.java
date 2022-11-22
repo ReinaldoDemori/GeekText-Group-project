@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 class PersonController {
-
     private  PersonRepository repository;
 
     PersonController(PersonRepository repository){
