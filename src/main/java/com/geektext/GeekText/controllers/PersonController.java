@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 class PersonController {
-
     private  PersonRepository repository;
 
     PersonController(PersonRepository repository){
@@ -38,18 +37,17 @@ class PersonController {
                 .orElseThrow(() -> new PersonNotFoundException(username)); //need to create exception file
     }
 
-    @PutMapping("/users/{username}")
+    @PutMapping("/users/edit/{username}")
     Person replacePerson(@RequestBody Person newPerson, @PathVariable String username) {
 
         return repository.findById(username)
                 .map(person -> {
                     person.setName(newPerson.getName());
+                    person.setAddress(newPerson.getAddress());
+                    person.setPassword(newPerson.getPassword());
                     return repository.save(person);
                 })
-                .orElseGet(() -> {
-                    //newPerson.setUsername(username);
-                    return repository.save(newPerson);
-                });
+                .orElseThrow(() -> new PersonNotFoundException (username));
     }
 
     @DeleteMapping("/users/{username}")

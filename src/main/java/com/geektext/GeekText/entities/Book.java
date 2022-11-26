@@ -23,6 +23,8 @@ public class Book {
     private String pubYear;
     
     private int sCopies;
+
+    private int ranking;
     
     @ManyToOne(targetEntity = Author.class)
     @JoinColumn(name = "authorid")
@@ -30,7 +32,7 @@ public class Book {
 
     public Book() {
     }
-    public Book(String isbn, String bName, String bDesc, double bPrice, String genre, String publisher, String pubYear, int sCopies) {
+    public Book(String isbn, String bName, String bDesc, double bPrice, String genre, String publisher, String pubYear, int sCopies, int ranking) {
         this.isbn = isbn;
         this.bName = bName;
         this.bDesc = bDesc;
@@ -39,6 +41,7 @@ public class Book {
         this.publisher = publisher;
         this.pubYear = pubYear;
         this.sCopies = sCopies;
+        this.ranking = ranking;
     }
 
     public String getIsbn() {
@@ -112,5 +115,12 @@ public class Book {
     public void setAuthorID(Author authorID) {
         this.authorID = authorID;
     }
-    
+
+    public int getRanking() {
+        return ranking;
+    }
+    public void setRanking(int ranking) {
+        this.ranking = ranking;
+    }
+   
 }
