@@ -9,14 +9,17 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.geektext.GeekText.entities.Book;
+import com.geektext.GeekText.repositories.BookRatingRepository;
 import com.geektext.GeekText.repositories.BookRepository;
 
 @RestController
 public class RankController {
     BookRepository books;
+    BookRatingRepository ratings;
     
-    public RankController(BookRepository books) {
+    public RankController(BookRepository books, BookRatingRepository ratings) {
         this.books = books;
+        this.ratings = ratings;
     }
 
     static <A> List<A> page(List<A> items, int page) {
@@ -46,5 +49,13 @@ public class RankController {
         List<Book> ranking = books.getBySold();
         return page(ranking, page);
     }
+
+    @GetMapping("/rank/rated/{limit}/{page}")
+    List<Book> rated(@PathVariable("limit") float limit, @PathVariable("page")int page) {
+        var rated  = ratings.findAll();
+        List<Book> items = rated.stream().filter(rate -> rate.getRating() >= limit).map(x -> x.getIsbn()).collect(Collectors.toList());
+        return page(items, page);
+    }
+
     
 }
