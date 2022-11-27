@@ -11,9 +11,9 @@ public interface BookRepository extends JpaRepository<Book, String> {
     @Query("Select b FROM Book b WHERE b.authorID.authorID = ?1")
     List<Book> findByAuthorID(int authorid);
 
-    @Query("Select book from Book book order by book.ranking")
+    @Query("Select book from Book book where book.ranking != 0 order by book.ranking")
     List<Book> getByRanking();
 
-    @Query("Select book from Book book order by book.sCopies desc")
+    @Query("Select book from Book book where book.sCopies != 0 order by book.sCopies desc")
     List<Book> getBySold();
 }
